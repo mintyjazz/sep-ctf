@@ -1,0 +1,6 @@
+version: '1'          # optional/arbitrary version number, for use by challenge author
+services:             # these services/boxes make up your challenge.  there may be only one.
+  web:                # you can probably name this whatever?
+    build: webserver  # looks for this directory and builds the docker container within.  you could also do . for current directory
+    ports:            # set up one or more port translation/mappings here.  public -> container
+      - '8000:8000'   # really, if we're running multiple challenges on a single VPS we'll need to go through each docker-compose.yaml and make sure each is using and different public port.  but that's easy enough
