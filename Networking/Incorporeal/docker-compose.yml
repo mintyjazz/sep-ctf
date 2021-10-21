@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  attacker:
+    build: attacker
+    ports:
+      - 9999:22
+    networks:
+      attackernet:
+        ipv4_address: 172.16.0.10
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - NET_BROADCAST
+  victim1:
+    build: victim1
+    networks:
+      attackernet:
+        ipv4_address: 172.16.0.11
+      victimnet:
+        ipv4_address: 10.0.0.11
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - NET_BROADCAST
+  victim2:
+    build: victim2
+    networks:
+      victimnet:
+        ipv4_address: 10.0.0.12
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - NET_BROADCAST
+
+networks:
+  attackernet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
+  victimnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24
