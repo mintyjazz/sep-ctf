@@ -1,0 +1,4 @@
+You have full freedom to modify network configuration within this challenge.  Don't bother going back upstream from the interface you used to access this Kali box - the target network is through the other interface.  
+
+Your initial target has IP address 192.168.20.3.  Your second target is somewhere beyond it, and is active on the network.  Both are open on common remote administration ports, with credentials admin : testing123!
+
