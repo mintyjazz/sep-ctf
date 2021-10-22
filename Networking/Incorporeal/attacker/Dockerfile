@@ -12,5 +12,6 @@ RUN useradd -rm -d /home/attacker -s /bin/bash -g root -G sudo -u 1000 attacker
 RUN echo "attacker:attacker" | chpasswd
 
 ADD docker-entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD ["/usr/sbin/sshd","-D"]
