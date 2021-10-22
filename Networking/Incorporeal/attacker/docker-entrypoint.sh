@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Misconfigurations go here
 ifconfig eth1 171.16.0.1

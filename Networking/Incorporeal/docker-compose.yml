@@ -17,15 +17,8 @@ services:
     networks:
       attackernet:
         ipv4_address: 172.16.0.11
-      victimnet:
-        ipv4_address: 10.0.0.11
     cap_add:
       - NET_ADMIN
-  victim2:
-    build: victim2
-    networks:
-      victimnet:
-        ipv4_address: 10.0.0.12
 
 networks:
   attacker_exposed:
@@ -38,8 +31,3 @@ networks:
       driver: default
       config:
         - subnet: 172.16.0.0/24
-  victimnet:
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.0.0.0/24

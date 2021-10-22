@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
+
+# generate the flag
+touch /home/victim1/flag.txt
+echo "flag{NETWORKING_PROBLEMS_ARE_EASY}" >> /home/victim1/flag.txt
 
 # broadcast onto the network so attacker can identify it
 ping 172.16.0.255 -b &
