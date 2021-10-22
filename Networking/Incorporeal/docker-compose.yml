@@ -3,12 +3,16 @@ version: "3.9"
 services:
   attacker:
     build: attacker
+    privileged: true
     ports:
-      - 9999:22
+      - 22:22
     networks:
+      attacker_exposed:
+        ipv4_address: 192.168.0.10
       attackernet:
         ipv4_address: 172.16.0.10
     cap_add:
+      - ALL
       - NET_ADMIN
       - NET_RAW
       - NET_BROADCAST
@@ -34,6 +38,11 @@ services:
       - NET_BROADCAST
 
 networks:
+  attacker_exposed:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
   attackernet:
     ipam:
       driver: default
