@@ -3,7 +3,6 @@ version: "3.9"
 services:
   attacker:
     build: attacker
-    privileged: true
     ports:
       - 22:22
     networks:
@@ -12,10 +11,7 @@ services:
       attackernet:
         ipv4_address: 172.16.0.10
     cap_add:
-      - ALL
       - NET_ADMIN
-      - NET_RAW
-      - NET_BROADCAST
   victim1:
     build: victim1
     networks:
@@ -25,17 +21,11 @@ services:
         ipv4_address: 10.0.0.11
     cap_add:
       - NET_ADMIN
-      - NET_RAW
-      - NET_BROADCAST
   victim2:
     build: victim2
     networks:
       victimnet:
         ipv4_address: 10.0.0.12
-    cap_add:
-      - NET_ADMIN
-      - NET_RAW
-      - NET_BROADCAST
 
 networks:
   attacker_exposed:
