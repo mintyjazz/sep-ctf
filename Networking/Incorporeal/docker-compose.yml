@@ -17,6 +17,21 @@ services:
     networks:
       attackernet:
         ipv4_address: 172.16.0.11
+      victim1net1:
+        ipv4_address: 172.16.1.11
+      victim1net2:
+        ipv4_address: 172.16.2.11
+      victim1net3:
+        ipv4_address: 172.16.3.11
+      victim1net4:
+        ipv4_address: 172.16.4.11
+    cap_add:
+      - NET_ADMIN
+  victim2:
+    build: victim2
+    networks:
+      victim1net3:
+        ipv4_address: 172.16.3.188
     cap_add:
       - NET_ADMIN
 
@@ -31,3 +46,23 @@ networks:
       driver: default
       config:
         - subnet: 172.16.0.0/24
+  victim1net1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.1.0/24
+  victim1net2:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.2.0/24
+  victim1net3:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.3.0/24
+  victim1net4:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.4.0/24
