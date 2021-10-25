@@ -4,7 +4,7 @@ services:
   attacker:
     build: attacker
     ports:
-      - 22:22
+      - "8000:22"
     networks:
       attacker_exposed:
         ipv4_address: 192.168.0.10
