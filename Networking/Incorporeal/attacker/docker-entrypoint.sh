@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Misconfigurations go here
-ifconfig eth1 171.16.0.1
+# ifconfig eth1 0.0.0.0
+ip addr del 172.16.0.10/24 dev eth1
 
 # self-deleting script
 rm -- "$0"
