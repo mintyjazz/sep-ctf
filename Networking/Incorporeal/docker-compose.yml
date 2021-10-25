@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  attacker:
+    build: attacker
+    ports:
+      - "8000:22"
+    networks:
+      attacker_exposed:
+        ipv4_address: 192.168.0.10
+      attackernet:
+        ipv4_address: 172.16.0.10
+    cap_add:
+      - NET_ADMIN
+  victim1:
+    build: victim1
+    networks:
+      attackernet:
+        ipv4_address: 172.16.0.11
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  attacker_exposed:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+  attackernet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
