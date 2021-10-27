@@ -1,8 +1,7 @@
-Simple Boot 2 Root.
+Simple Boot 2 Root (again).
 
-Gather information from anonymous FTP. (username)
-Brute force password via ssh.
-Escalate through 'sudo -l' and some GTFObin avenue.
+Abuse ftp permissions and notice its combination with apache.
+Abuse sudo permissions to gather hashes and crack them offline.
 
 user.txt
-root.txt
+root.txt.?
