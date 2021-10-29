@@ -38,7 +38,7 @@ RUN schtasks /create /sc minute /mo 1 /tn "RunNotAGoodIdea" /tr "C:\\Program Fil
 
 # FLAG 3 unattended.xml # Simple Password Minning #
 RUN powershell -command New-Item -Path 'c:\\sysprep' -ItemType "directory"
-RUN powershell -command New-Item -Path 'c:\\windows\\Panther\Unattend' -ItemType "directory"
+RUN powershell -command New-Item -Path 'c:\\windows\\Panther\\Unattend' -ItemType "directory"
 RUN powershell -command Move-Item -Path 'c:\\temp\\unattended.xml' -Destination 'c:\\windows\\Panther\\Unattend'
 
 # FLAG 4 Unquoted service path # 
