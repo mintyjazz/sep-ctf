@@ -2,10 +2,10 @@ FROM mcr.microsoft.com/windows:20H2
 
 # Makes directory for Startup Script #
 RUN powershell -command New-Item -Path 'C:\\temp' -ItemType "directory" 
+RUN powershell -command New-Item -Path 'C:\\tools' -ItemType "directory"
 
 
 # Create User for testing #
-RUN powershell -command net user bob 1234 /add
 RUN powershell -command net user harry 84sheepdog /add
 
 # Load Resources
@@ -13,8 +13,9 @@ COPY //resources//OpenSSH-Server-Package~31bf3856ad364e35~amd64~~.cab// c:\\temp
 COPY //resources//setup.ps1// c:\\temp
 COPY //resources//puttyreg.reg// c:\\temp
 COPY //resources//sshd_service_start.ps1// c:\\Windows
-COPY //resources//cmd.exe// c:\\temp
+COPY //resources//cmd.exe// c:\\tools
 COPY //resources//unattended.xml c:\\temp
+COPY //resources//Simple.exe c:\\tools
 
 # Set Excution Policy/Enables Scripting #
 RUN powershell -command Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
@@ -41,8 +42,10 @@ RUN powershell -command New-Item -Path 'c:\\sysprep' -ItemType "directory"
 RUN powershell -command New-Item -Path 'c:\\windows\\Panther\\Unattend' -ItemType "directory"
 RUN powershell -command Move-Item -Path 'c:\\temp\\unattended.xml' -Destination 'c:\\windows\\Panther\\Unattend'
 
-# FLAG 4 Unquoted service path # 
-#RUN sc.exe create SimpleMistake type= own start= boot
+# FLAG 4 Unquoted service path # # Modified Simple.exe placed in C:\\Program Files pushes flag to C:\Program Files\SimpleMistake\flag_4.txt after restarting SimpleMistake service#
+RUN powershell -command New-Item -Path 'C:\\Program Files\\Simple Mistake' -ItemType "directory"
+RUN powershell -command New-Item -Path 'C:\\Program Files\\Simple Mistake\\simplemistake.exe' -ItemType "file"
+RUN sc.exe create "SimpleMistake" start= "auto" binpath= "C:\Program Files\Simple Mistake\simplemistake.exe" DisplayName= "SimpleMistake"
 
 # Set Excution Policy/Disables Scripting # Enable Once everything works
 # RUN powershell -command Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope LocalMachine

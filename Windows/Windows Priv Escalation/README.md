@@ -6,6 +6,7 @@ Three flags for relating to Windows OS privelege escalation. Write up coming soo
 
 Future updates:
 Write up
+Fix Unquoted Service Path exploit
 Networked boxes
 Obfuscated Docker
 
