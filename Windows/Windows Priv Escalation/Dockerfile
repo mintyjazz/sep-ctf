@@ -26,7 +26,7 @@ RUN powershell -command New-Item -Path 'C:\\Program Files (x86)\\PuTTY\\putty.ex
 RUN reg import c:\\temp\\puttyreg.reg
 
 # Run OS Setup
-RUN powershell -command c:\\temp\\setup.ps1
+#RUN powershell -command c:\\temp\\setup.ps1
 
 # Adds SSH Server capability and starts service # Need to enable scheduled task DOCKER issue #
 RUN powershell -command Add-WindowsPackage -Online -PackagePath c:\\temp\\OpenSSH-Server-Package~31bf3856ad364e35~amd64~~.cab
@@ -48,8 +48,8 @@ RUN powershell -command New-Item -Path 'C:\\Program Files\\Simple Mistake\\simpl
 RUN sc.exe create "SimpleMistake" start= "auto" binpath= "C:\Program Files\Simple Mistake\simplemistake.exe" DisplayName= "SimpleMistake"
 
 # Set Excution Policy/Disables Scripting # Enable Once everything works
-# RUN powershell -command Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope LocalMachine
+RUN powershell -command Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope LocalMachine
 
 # Removes directory for Startup Script #
-# RUN powershell -command Remove-Item C:\\temp -Recurse -Confirm:$false
+RUN powershell -command Remove-Item C:\\temp -Recurse -Confirm:$false
 
