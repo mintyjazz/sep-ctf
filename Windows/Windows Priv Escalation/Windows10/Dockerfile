@@ -55,7 +55,5 @@ RUN powershell -command Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope L
 
 # Removes directory for Startup Script #
 RUN powershell -command Remove-Item C:\\temp -Recurse -Confirm:$false
-USER harry
-ENV Path="C:\\Program Files\\NotAGoodIdea;C:\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Users\\ContainerAdministrator\\AppData\\Local\\Microsoft\\WindowsApp"
 
 CMD cmd /c ping -t localhost > NUL
