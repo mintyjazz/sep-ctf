@@ -7,9 +7,9 @@ Whats been implemented so far:
 Three flags relating to Windows OS privelege escalation. Write up coming soon...
 
 Future updates:
-Write up
-Fix Unquoted Service Path exploit
-Networked boxes
-Obfuscated Docker
+Write up,
+Fix Unquoted Service Path exploit,
+Networked boxes,
+Obfuscated Docker,
 
 
