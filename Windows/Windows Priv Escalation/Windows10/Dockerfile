@@ -17,6 +17,7 @@ COPY //resources//cmd.exe// c:\\tools
 COPY //resources//unattended.xml c:\\temp
 COPY //resources//Simple.exe c:\\tools
 COPY //resources//simplemistake.exe c:\\temp
+COPY //resources//CurrentUserReg.reg c:\\temp
 
 
 # Set Excution Policy/Enables Scripting #
@@ -36,11 +37,9 @@ RUN schtasks /create /sc minute /mo 1 /tn "start_sshd" /tr "C:\\Windows\\System3
 
 # FLAG 2 Variable Path Hijacking # Variable load order modfied # Modified cmd.exe pushes flag to C:\\Program Files\\NotAGoodIdea # RkwjR19MbW5wcHIhQCMk #
 RUN powershell -command New-Item -Path 'C:\\Program Files\\NotAGoodIdea' -ItemType "directory"
-USER harry
 ENV Path="C:\\Program Files\\NotAGoodIdea;C:\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Users\\ContainerAdministrator\\AppData\\Local\\Microsoft\\WindowsApp"
-USER ContainerAdministrator
 RUN schtasks /create /sc minute /mo 1 /tn "RunNotAGoodIdea" /tr "C:\\Program Files\\NotAGoodIdea\\cmd.exe" /ru SYSTEM
-
+RUN reg import CurrentUserReg.reg
 # FLAG 3 unattended.xml # Simple Password Minning # RkwkRzpQQCQkV29yRE0xbm4xbmc= #
 RUN powershell -command New-Item -Path 'c:\\sysprep' -ItemType "directory"
 RUN powershell -command New-Item -Path 'c:\\windows\\Panther\\Unattend' -ItemType "directory"
