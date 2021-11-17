@@ -40,6 +40,8 @@ RUN echo 'derek:orangemochafrappuccino' | chpasswd
 RUN mkdir -p /home/derek/but/why/male/models
 COPY flag4.txt /home/derek/but/why/male/models
 RUN chown -R derek /home/derek/but/why/male/models
+RUN chmod 700 /home/derek
+RUN chmod 600 /home/derek/but/why/male/models/flag4.txt
 
 RUN echo 'root:whymalemodels' | chpasswd
 
