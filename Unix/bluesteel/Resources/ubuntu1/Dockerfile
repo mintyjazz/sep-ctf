@@ -37,9 +37,8 @@ RUN chmod 700 /home/hansel
 
 RUN useradd -m derek
 RUN echo 'derek:orangemochafrappuccino' | chpasswd
-RUN mkdir -p /home/derek/but/why/male/models
-COPY flag4.txt /home/derek/but/why/male/models
-RUN chown -R derek /home/derek/but/why/male/models
+COPY flag4.txt /home/derek/but/why/male/models/flag4.txt
+RUN chmod 700 /home/derek
 
 RUN echo 'root:whymalemodels' | chpasswd
 
