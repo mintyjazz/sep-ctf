@@ -19,3 +19,7 @@ Good hunting!
 ## Instructions
 1. Change directory to `Coffeepoint/Resources/`
 2. Run `sudo docker-compose up`
+
+## Authors
+TSgt Burgess - Mattermost `@sascha.burgess`
+SrA Warde - Mattermost `@dylanwarde`
