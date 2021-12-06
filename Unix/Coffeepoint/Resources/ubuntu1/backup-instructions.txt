@@ -1,0 +1,5 @@
+Attention Webmaster:
+
+Please use the backup.py script to make a copy of our website at least once per week. The backup script stores files in /var/www, so you have to run it as root. 
+
+You have been granted access to run the script as needed to perform your duties.

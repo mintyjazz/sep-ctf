@@ -1,0 +1,4 @@
+<?php
+$db_user = "cpointdb";
+$db_pass = "c0f33b34n5";
+?>
