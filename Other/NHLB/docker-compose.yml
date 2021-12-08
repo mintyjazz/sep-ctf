@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  coffeepoint_server:
+    build: ./ubuntu1/.
+    domainname: coffeepoint.com
+    hostname: coffeepoint
+    networks:
+      cpoint:
+        ipv4_address: 10.10.15.10
+networks:
+  cpoint:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.15.0/24
+          gateway: 10.10.15.1
+
