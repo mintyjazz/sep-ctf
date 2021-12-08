@@ -1,17 +1,43 @@
 version: "3.9"
 services:
-  coffeepoint_server:
-    build: ./ubuntu1/.
+  1secworkstation:
+    build: ./1secworkstation/.
     domainname: coffeepoint.com
-    hostname: coffeepoint
+    hostname: secworkstation
     networks:
-      cpoint:
+      cpoint2:
         ipv4_address: 10.10.15.10
+  2ftpserver:
+    build: ./2ftpserver/.
+    domainname: coffeepoint.com
+    hostname: ftpserver
+    networks:
+      cpoint2:
+        ipv4_address: 10.10.15.20
+  3userworkstation:
+    build: ./3userworkstation/.
+    domainname: coffeepoint.com
+    hostname: userworkstation
+    networks:
+      cpoint2:
+        ipv4_address: 10.10.15.30
+  4attacker:
+    build: ./4attacker/.
+    domainname: redspace.net
+    hostname: l33t
+    networks:
+      redspacenet:
+        ipv4_address: 192.168.150.69
 networks:
-  cpoint:
+  cpoint2:
     driver: bridge
     ipam:
       config:
         - subnet: 10.10.15.0/24
           gateway: 10.10.15.1
-
+  redspacenet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.150.0/24
+          gateway: 192.168.150.1
