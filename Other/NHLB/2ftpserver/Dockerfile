@@ -4,4 +4,8 @@ RUN apt install -y vim
 
 RUN apt install -y vsftpd
 
-ENTRYPOINT ["tail","-f","/dev/null"]
+WORKDIR /setup
+COPY sshd.sh .
+COPY wrapper.sh .
+RUN chmod +x *
+CMD ["./wrapper.sh", "-D"]
