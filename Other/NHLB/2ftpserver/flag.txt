@@ -17,3 +17,5 @@ Compromised IP: `10.10.15.30`
 You can access the system and look around using the following credentials:
 U: technician
 P: helpdeskadmin
+
+chief
