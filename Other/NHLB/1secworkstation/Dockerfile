@@ -22,7 +22,7 @@ RUN chown -R chief /home/chief
 
 #Moving files onto system
 RUN mkdir /home/chief/.keys/
-COPY --chown=chief:chief ftpkey.txt /home/chief/.keys/
+COPY --chown=chief:chief creds.txt /home/chief/.creds/
 COPY --chown=chief:chief case-notes.txt /home/chief/
 COPY --chown=chief:chief 20211207malware /home/chief/
 
