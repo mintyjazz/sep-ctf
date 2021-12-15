@@ -20,10 +20,12 @@ RUN echo "technician:helpdeskadmin" | chpasswd
 RUN useradd -m -d /home/filekeeper -s /usr/sbin/nologin filekeeper
 RUN echo "filekeeper:hRC3lTqbA6" | chpasswd
 COPY help.txt /home/filekeeper/
+COPY flag.txt /root/
 
 #Setp wrapper and execute
 WORKDIR /setup
 COPY sshd.sh .
+COPY check.sh .
 COPY vsftpd.sh .
 COPY wrapper.sh .
 RUN chmod +x * 
