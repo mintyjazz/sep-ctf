@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ./sshd.sh &
-#sudo -u testuser ./test.py &
+
+service cron start
 
 while true; do sleep 1; done
