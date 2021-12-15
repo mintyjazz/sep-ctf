@@ -4,9 +4,11 @@ FROM archlinux:latest
 #RUN apt update
 RUN pacman -Syu --noconfirm
 
+#hi
+
 RUN pacman -Sy openssh --noconfirm
 
-RUN systemctl enable sshd.service && systemctl start sshd.service
+RUN systemctl enable sshd.service
 
 #Add users
 RUN useradd -m -d /home/chief -s /bin/bash chief
