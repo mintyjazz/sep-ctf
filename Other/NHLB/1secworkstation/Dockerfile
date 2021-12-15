@@ -13,6 +13,7 @@ FROM ubuntu:18.04
 RUN apt update
 RUN apt install -y openssh-server
 RUN apt install -y netcat
+#RUN service ssh restart
 
 #Add users
 RUN useradd -m -d /home/chief -s /bin/bash chief
@@ -25,5 +26,8 @@ COPY --chown=chief:chief ftpkey.txt /home/chief/.keys/
 COPY --chown=chief:chief case-notes.txt /home/chief/
 COPY --chown=chief:chief 20211207malware /home/chief/
 
-ENTRYPOINT ["tail","-f","/dev/null"]
-
+WORKDIR /setup
+COPY sshd.sh .
+COPY wrapper.sh .
+RUN chmod +x *
+CMD ["./wrapper.sh", "-D"]
