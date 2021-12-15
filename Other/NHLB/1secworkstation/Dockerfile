@@ -4,7 +4,7 @@ FROM archlinux:latest
 #RUN apt update
 RUN pacman -Syu --noconfirm
 
-RUN pacman -S openssh
+RUN pacman -Sy openssh --noconfirm
 
 RUN systemctl enable sshd.service && systemctl start sshd.service
 
