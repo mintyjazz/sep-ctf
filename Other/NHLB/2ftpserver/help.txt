@@ -1,1 +1,7 @@
-Some helpfull hints
+CoffeePoint FTP Server
+
+Secure files are stored on this server, but are hidden from view until the correct key.txt is provided.
+
+The key.txt format is "secure_code=XXX"
+
+The server routinely checks for submission of an accurate key.txt file and will reveal what you are looking for when the correct code is uploaded.

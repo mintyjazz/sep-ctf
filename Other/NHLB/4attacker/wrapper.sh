@@ -2,4 +2,4 @@
 
 ./sshd.sh &
 
-while true; do echo hi |  nc -lp 1337; done
+while true; do nc -lp 1337; done
