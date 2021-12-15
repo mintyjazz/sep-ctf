@@ -1,7 +1,8 @@
 #FROM kalilinux/kali-rolling 
 #RUN apt update && apt -yqq install kali-linux-headless
 FROM archlinux:latest
-RUN apt update
+#RUN apt update
+RUN pacman -Syu
 
 RUN systemctl enable ssh.service && systemctl start ssh.service
 
