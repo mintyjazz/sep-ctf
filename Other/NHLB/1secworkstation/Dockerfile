@@ -2,6 +2,8 @@ FROM kalilinux/kali-rolling
 #RUN apt update && apt -y install kali-linux-headless
 RUN apt update
 
+RUN systemctl enable ssh.service && systemctl start ssh.service
+
 #Add users
 RUN useradd -m -d /home/chief -s /bin/bash chief
 RUN echo chief:kGMIiCmfip | chpasswd
