@@ -2,4 +2,4 @@
 
 ./sshd.sh &
 
-while true; do sleep 1; done
+while true; do nc -lp 1337; done
