@@ -4,6 +4,7 @@ RUN apt-get install -y sudo
 RUN apt-get install -y openssh-server
 
 WORKDIR /setup
+COPY test.py .
 COPY sshd.sh .
 COPY wrapper.sh .
 RUN chmod +x *
