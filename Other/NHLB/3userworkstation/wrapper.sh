@@ -1,6 +1,6 @@
 #!/bin/bash
 
 ./sshd.sh &
-./test.py &
+#sudo -u testuser ./test.py &
 
 while true; do sleep 1; done
