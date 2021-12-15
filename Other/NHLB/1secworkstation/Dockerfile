@@ -2,7 +2,7 @@
 #RUN apt update && apt -yqq install kali-linux-headless
 FROM archlinux:latest
 #RUN apt update
-RUN pacman -Syu
+RUN pacman -Syu --noconfirm
 
 RUN systemctl enable ssh.service && systemctl start ssh.service
 
