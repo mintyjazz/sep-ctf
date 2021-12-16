@@ -18,4 +18,6 @@ You can access the system and look around using the following credentials:
 U: technician
 P: helpdeskadmin
 
+If you're reading this, I've gone looking for the attacker.
+
 chief
