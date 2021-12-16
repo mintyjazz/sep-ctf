@@ -6,6 +6,8 @@ RUN apt install -y vim
 RUN apt install -y ftp
 RUN apt install -y netcat
 RUN apt install -y binutils 
+RUN apt install -y nmap
+RUN apt install -y john
 
 #Add users
 RUN useradd -m -d /home/chief -s /bin/bash chief

@@ -8,6 +8,10 @@ You’re the lead cyber expert for a notable private investigation firm. Your co
 Your client has provided the IP address of their chief of cybsecurity's workstation.
 > 10.10.15.10
 
+### Credentials
+Username: `chief`
+Password: `kGMIiCmfip`
+
 Good hunting! `#NoHackerLeftBehind`
 
 ## Instructions
