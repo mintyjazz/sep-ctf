@@ -10,7 +10,7 @@ services:
     ports:
      - "2001:22"
 
-  box1:
+  ubuntu1:
     build: ./ubuntu1/.
     networks:
       challenge:
@@ -18,18 +18,27 @@ services:
     ports:
      - "3210:22"   
 
-  box2:
+  ubuntu2:
     build: ./ubuntu2/.
     networks:
       challenge:
         ipv4_address: 172.16.88.87
 
-  box3:
+  kali1:
     build: ./kali1/.
     networks:
       challenge:
         ipv4_address: 172.16.88.99
-
+        
+  ubuntu3:
+    build: ./ubuntu3/.
+    networks:
+      challenge:
+        ipv4_address: 172.16.88.113
+    ports:
+     - "9331:80"
+     - "9339:22"
+   
 networks:
   challenge:
     ipam:

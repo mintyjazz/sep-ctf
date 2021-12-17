@@ -8,6 +8,7 @@ RUN apt-get install -y nmap
 RUN apt-get install -y steghide
 RUN apt-get install -y dirb
 RUN apt-get install -y cron
+RUN apt-get install -y john
 
 #Configure SSH and apache
 RUN mkdir /var/run/sshd
@@ -30,6 +31,9 @@ COPY flag_write.sh /usr/bin/flag_write.sh
 RUN chmod 700 /usr/bin/flag_write.sh
 
 RUN chmod +s /usr/bin/cp
+
+COPY common.txt /usr/share/dirb/wordlists/
+COPY password.lst /usr/share/john/
 
 
 WORKDIR /root/setup
