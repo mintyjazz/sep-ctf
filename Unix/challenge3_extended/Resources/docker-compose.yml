@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+
+  apache:
+    build: ./spy/.
+    tty: true
+    networks:
+      challenge:
+        ipv4_address:  172.16.88.33
+    ports:
+     - "2001:22"
+
+  ubuntu1:
+    build: ./ubuntu1/.
+    networks:
+      challenge:
+        ipv4_address: 172.16.88.34
+    ports:
+     - "3210:22"   
+
+  ubuntu2:
+    build: ./ubuntu2/.
+    networks:
+      challenge:
+        ipv4_address: 172.16.88.87
+
+  kali1:
+    build: ./kali1/.
+    networks:
+      challenge:
+        ipv4_address: 172.16.88.99
+        
+  ubuntu3:
+    build: ./ubuntu3/.
+    networks:
+      challenge:
+        ipv4_address: 172.16.88.113
+    ports:
+     - "9331:80"
+     - "9339:22"
+   
+networks:
+  challenge:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.88.0/24
