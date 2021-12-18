@@ -15,8 +15,8 @@ Password: `kGMIiCmfip`
 Good hunting! `#NoHackerLeftBehind`
 
 ## Instructions
-1. Change directory to `Coffeepoint/Resources/`
-2. Run `sudo docker-compose up -d`
+1. Run `sudo docker-compose up -d`
+2. Go!
 
 ## Authors
 TSgt Burgess - Mattermost `@sascha.burgess`
