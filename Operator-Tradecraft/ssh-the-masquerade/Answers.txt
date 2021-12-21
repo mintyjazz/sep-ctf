@@ -1,0 +1,36 @@
+Run each one in its own terminal window on op_station.
+==========
+Connect op_station -> box_1 with tunnel to box_2:
+    ssh -M -S /tmp/b1 -p 22 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@10.42.0.11 -L127.0.0.1:2222:10.42.0.12:22
+
+Connect box_1 -> box_2 with tunnels to box_3/box_5:
+    ssh -M -S /tmp/b2 -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1 -L127.0.0.1:3333:10.42.0.13:22 -L127.0.0.1:5555:10.42.0.15:22
+
+Connect box_2 -> box_3 with tunnel to box_4:
+    ssh -M -S /tmp/b3 -p 3333 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1 -L127.0.0.1:4444:10.42.0.14:22
+
+Connect box_3 -> box_4, flag in /etc/:
+    ssh -M -S /tmp/b4 -p 4444 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1
+
+Exit box_4.
+Exit box_3.
+
+Connect box_2 -> box_5 with tunnels to box_6/box_7:
+    ssh -M -S /tmp/b5 -p 5555 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1 -L127.0.0.1:6666:10.42.0.16:22 -L127.0.0.1:7777:10.42.0.17:22
+
+Connect box_5 -> box_6, flag in /etc/:
+    ssh -M -S /tmp/b6 -p 6666 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1
+
+Exit box_6.
+
+Connect box_5 -> box_7 with tunnel to box_8:
+    ssh -M -S /tmp/b7 -p 7777 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1 -L127.0.0.1:8888:10.42.0.18:22
+
+Connect box_7 -> box_8, flag in /etc/:
+    ssh -M -S /tmp/b8 -p 8888 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1
+
+Exit box_8.
+Exit box_7.
+Exit box_5.
+Exit box_2.
+Exit box_1.
