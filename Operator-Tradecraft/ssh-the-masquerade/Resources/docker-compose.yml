@@ -1,0 +1,64 @@
+version: '3.9'
+services:
+   
+  op_station:
+    build: ./op_station/.
+    networks:
+      secretnetwork:
+        ipv4_address:  10.42.0.2
+    ports:
+     - "2200:22"
+     - "3301:2222"
+     - "3302:3333"
+     - "3303:4444"
+     - "3304:5555"
+     - "3304:6666"
+     - "3305:7777"
+     - "3306:8888"
+  
+  box_1:
+    build: ./box_1/.
+    networks:
+      secretnetwork:
+        ipv4_address: 10.42.0.11
+    ports:
+     - "2201:22"   
+
+  box_2:
+    build: ./box_2/.
+    networks:
+      secretnetwork:
+        ipv4_address: 10.42.0.14 
+    ports:
+     - "2202:22"  
+
+  box_3:
+    build: ./box_3/.
+    networks:
+      secretnetwork:
+        ipv4_address: 10.42.0.15 
+    ports:
+     - "2203:22"  
+
+  box_4:
+    build: ./box_4/.
+    networks:
+      secretnetwork:
+        ipv4_address: 10.42.0.16
+    ports:
+     - "2204:22"  
+
+  box_5:
+    build: ./box_5/.
+    networks:
+      secretnetwork:
+        ipv4_address: 10.42.0.17
+    ports:
+     - "2205:22"  
+
+networks:
+  secretnetwork:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.42.0.0/24
