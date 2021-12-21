@@ -10,7 +10,7 @@ ROE's:
 3. SSHing directly from one target's terminal window into another target is not authorized.
 4. Each SSH tunnel will utilize a separate named master pipe per target. (used in exfil/pivoting)
 5. Verify the IP of each box upon gaining access to ensure you are on the correct target.
-6. Use SSH flag options "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" to prevent key mismatch errors.
+6. Use SSH flag options ```-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null``` to prevent key mismatch errors.
 7. Port 22 will be used on each target to SSH tunnel to. Creds are for each target are root::acomplexpassword
 8. Follow the below order of operations when maneuvering through the network.
 	e.g. reach box_4, back out to box_2, go to box_6, back out to box_5, go to box_8
@@ -48,13 +48,11 @@ Getting Started:
 ==========
 - Connecting from op_station to the first target:
 ```
-	ssh -M -S /tmp/b1 -p <box_1's SSH port> -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null <box_1's username>@<box_1's IP> 
-	-L127.0.0.1:<box_2's local port>:<box_2's IP>:<box_2's SSH port>
+	ssh -M -S /tmp/b1 -p <box_1's SSH port> -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null <box_1's username>@<box_1's IP> -L127.0.0.1:<box_2's local port>:<box_2's IP>:<box_2's SSH port>
 ```
 - Pivoting to the next target:
 ```
-	ssh -M -S /tmp/b2 -p <box_2's local port> -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null <box_2's username>@127.0.0.1 
-	-L127.0.0.1:<box_3's local port>:<box_3's IP>:<box_3's SSH port> -L127.0.0.1:<box_5's local port>:<box_5's IP>:<box_5's SSH port>
+	ssh -M -S /tmp/b2 -p <box_2's local port> -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null <box_2's username>@127.0.0.1 -L127.0.0.1:<box_3's local port>:<box_3's IP>:<box_3's SSH port> -L127.0.0.1:<box_5's local port>:<box_5's IP>:<box_5's SSH port>
 ```
 In the above command, multiple tunnels are added to the same control path (/tmp/box_2) in one command. The "-O forward" flag can also be used after specifying the desired controlpath with the "-S" flag.
 
