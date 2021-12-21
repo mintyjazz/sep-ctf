@@ -54,6 +54,6 @@ Getting Started:
 ```
 	ssh -M -S /tmp/b2 -p <box_2's local port> -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null <box_2's username>@127.0.0.1 -L127.0.0.1:<box_3's local port>:<box_3's IP>:<box_3's SSH port> -L127.0.0.1:<box_5's local port>:<box_5's IP>:<box_5's SSH port>
 ```
-In the above command, multiple tunnels are added to the same control path (/tmp/box_2) in one command. The "-O forward" flag can also be used after specifying the desired controlpath with the "-S" flag.
+In the above command, multiple tunnels are added to the same control path (/tmp/box_2) in one command. The ```-O forward``` flag can also be used after specifying the desired controlpath with the ```-S``` flag.
 
 Hu/Jansen
