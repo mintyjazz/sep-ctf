@@ -4,6 +4,7 @@ RUN apt-get install -y sudo
 RUN apt-get install -y openssh-server
 RUN apt-get install -y cron
 RUN apt-get install -y net-tools
+RUN apt-get install -y iputils-ping
 
 RUN useradd -m -d /home/bsmith -s /bin/bash bsmith
 RUN usermod -aG sudo bsmith
@@ -20,6 +21,23 @@ RUN usermod -aG sudo technician
 #Add malicious user
 RUN useradd -m -d /home/purplepanda -s /bin/bash purplepanda
 RUN echo "purplepanda:m1911a1" | chpasswd
+
+#More users for realism
+
+RUN useradd -m -d /home/eselby -s /bin/bash eselby
+RUN echo "eselby:my6txIU5ej" | chpasswd
+
+RUN useradd -m -d /home/jharrison -s /bin/bash jharrison
+RUN echo "jharrison:HKuXUIhz8z" | chpasswd
+
+RUN useradd -m -d /home/tandrews -s /bin/bash tandrews
+RUN echo "tandrews:vCin83gpV5" | chpasswd
+
+RUN useradd -m -d /home/yacosta -s /bin/bash yacosta
+RUN echo "yacosta:ihL4uIpVxF" | chpasswd
+
+RUN useradd -m -d /home/gsamuels -s /bin/bash gsamuels
+RUN echo "gsamuels:yiDx4HAFPa" | chpasswd
 
 WORKDIR /setup
 COPY sshd.sh .

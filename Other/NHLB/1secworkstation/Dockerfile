@@ -9,6 +9,7 @@ RUN apt install -y binutils
 RUN apt install -y nmap
 RUN apt install -y john
 
+
 #Add users
 RUN useradd -m -d /home/chief -s /bin/bash chief
 RUN echo chief:kGMIiCmfip | chpasswd
