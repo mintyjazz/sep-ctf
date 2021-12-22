@@ -1,0 +1,3 @@
+If you're reading this, you've found PurplePanda's hacker workstation. I traced suspicious signals from our network back to this location and found my way into the /root filesystem. I am going to pursue another lead and look for the nefarious PurplePanda at 123 N West Ave, Washington DC, 20500. If you find this note, come find me. 
+
+chief

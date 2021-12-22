@@ -1,0 +1,6 @@
+i've identified a suspicious binary that i've renamed "malware"
+i ran it once (by accident), and it seems like it didn't do anything. maybe the source code was unfinished?
+i will have it sent to the forensics team next week to see if they can identify any revealing information about the perpetrator from the source code
+
+
+chief
